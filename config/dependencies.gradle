@@ -1,0 +1,269 @@
+ext {
+    compileSdk = 28
+    targetSdk = 28
+    minSdk = 21
+
+    versions = [
+            androidTools: '4.1.1',
+            apollo      : '2.4.6',
+            dagger      : '2.27',
+            espresso    : '3.2.0',
+            fresco      : '2.1.0',
+            kotlin      : '1.3.61',
+            lifecycle   : '2.1.0',
+            mockito     : '3.1.0',
+            mvrx        : '1.3.0',
+            okHttp      : '4.4.1',
+            pickle      : '2.1.0',
+            retrofit    : '2.8.1',
+            room        : '2.2.5',
+            work        : '2.2.0',
+            sqlDelight  : '1.2.1', // do not update to 1.2.2 due to https://github.com/cashapp/sqldelight/issues/1580
+            paging      : '2.1.2',
+            leakCanary  : '2.2',
+            cameraX     : '1.0.0-beta03',
+            navigation  : '2.2.2',
+            glide       : '4.11.0',
+            coroutines  : '1.3.7',
+    ]
+
+    deps = [
+            charts        : 'com.github.PhilJay:MPAndroidChart:v3.1.0',
+            crashlytics   : 'com.crashlytics.sdk.android:crashlytics:2.10.1',
+            crashlyticsNdk: 'com.crashlytics.sdk.android:crashlytics-ndk:2.1.1',
+            javaTime      : 'com.jakewharton.threetenabp:threetenabp:1.2.2',
+            kotlin        : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
+            ktlint        : "com.pinterest:ktlint:0.36.0",
+            leakCanary    : "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary",
+            mvrx          : "com.airbnb.android:mvrx:$versions.mvrx",
+            okta          : 'com.okta.android:oidc-androidx:1.0.5',
+            rxAndroid     : 'io.reactivex.rxjava2:rxandroid:2.1.1',
+            rxJava        : 'io.reactivex.rxjava2:rxjava:2.2.19',
+            rxKotlin      : 'io.reactivex.rxjava2:rxkotlin:2.4.0',
+            rxrelay       : 'com.jakewharton.rxrelay2:rxrelay:2.1.0',
+            SQLiteEncrypt : "com.commonsware.cwac:saferoom.x:1.2.1",
+            zxing         : 'com.google.zxing:core:3.4.0',
+            rxDogTag      : 'com.uber.rxdogtag:rxdogtag:1.0.0',
+    ]
+
+    deps.coroutines = [
+            core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+            android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+    ]
+
+    deps.cameraX = [
+            core           : "androidx.camera:camera-camera2:$versions.cameraX",
+            cameraView     : "androidx.camera:camera-view:1.0.0-alpha08",
+            cameraLifecycle: "androidx.camera:camera-lifecycle:$versions.cameraX",
+    ]
+
+    deps.sqlDelight = [
+            rxJava       : "com.squareup.sqldelight:rxjava2-extensions:$versions.sqlDelight",
+            androidDriver: "com.squareup.sqldelight:android-driver:$versions.sqlDelight",
+            androidPaging: "com.squareup.sqldelight:android-paging-extensions:$versions.sqlDelight",
+    ]
+
+    deps.androidx = [
+            appcompat        : 'androidx.appcompat:appcompat:1.1.0',
+            constraint       : 'androidx.constraintlayout:constraintlayout:2.0.0-beta4',
+            core             : 'androidx.core:core-ktx:1.2.0',
+            fragment         : 'androidx.fragment:fragment-ktx:1.2.4',
+            preference       : 'androidx.preference:preference:1.1.1',
+            workManager      : "androidx.work:work-runtime-ktx:$versions.work",
+            workManagerRxJava: "androidx.work:work-rxjava2:$versions.work",
+            paging           : "androidx.paging:paging-runtime:$versions.paging",
+            pagingRxJava     : "androidx.paging:paging-rxjava2-ktx:$versions.paging",
+    ]
+
+    deps.room = [
+            runtime : "androidx.room:room-runtime:$versions.room",
+            ktx     : "androidx.room:room-ktx:$versions.room",
+            compiler: "androidx.room:room-compiler:$versions.room",
+            rxJava  : "androidx.room:room-rxjava2:$versions.room",
+    ]
+
+    deps.thirdPart = [
+            materialDialogCore       : 'com.afollestad.material-dialogs:core:3.3.0',
+            materialDialogBottomSheet: 'com.afollestad.material-dialogs:bottomsheets:3.2.1',
+            levelProgressBar         : 'ir.alirezaiyan:levelprogressbar:1.0.2',
+            horizontalProgressBar    : 'com.akexorcist:round-corner-progress-bar:2.1.1',
+    ]
+
+    deps.navigation = [
+            fragment: "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
+            ui      : "androidx.navigation:navigation-ui-ktx:$versions.navigation",
+            runtime : "androidx.navigation:navigation-runtime-ktx:$versions.navigation",
+    ]
+
+    deps.material = [
+            // Be careful with the material version since it affects ViewPager2 version.
+            // Currently [TabsCardViewBinding] depends heavily on implementation details of ViewPager2 and
+            // Changing the version of ViewPager2 dependency can break our apps functionality severely.
+            material    : 'com.google.android.material:material:1.2.0-beta01',
+            swipeRefresh: 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    ]
+
+    deps.lifecycle = [
+            java8    : "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle",
+            livedata : "androidx.lifecycle:lifecycle-livedata:$versions.lifecycle",
+            viewmodel: "androidx.lifecycle:lifecycle-viewmodel:$versions.lifecycle",
+            process  : "androidx.lifecycle:lifecycle-process:$versions.lifecycle",
+    ]
+
+    deps.playServices = [
+            playCore  : 'com.google.android.play:core-ktx:1.6.4',
+            vision    : 'com.google.android.gms:play-services-vision:18.0.0',
+            identifier: 'com.google.android.gms:play-services-ads-identifier:17.0.0'
+    ]
+
+    deps.firebase = [
+            analytics  : 'com.google.firebase:firebase-analytics:17.2.1',
+            performance: 'com.google.firebase:firebase-perf:19.0.2',
+            config     : 'com.google.firebase:firebase-config:19.0.3'
+    ]
+
+    deps.dagger = [
+            androidCompiler    : "com.google.dagger:dagger-android-processor:$versions.dagger",
+            androidRuntime     : "com.google.dagger:dagger-android-support:$versions.dagger",
+            compiler           : "com.google.dagger:dagger-compiler:$versions.dagger",
+            runtime            : "com.google.dagger:dagger:$versions.dagger",
+            assistedAnnotations: 'com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2',
+            assisted           : 'com.squareup.inject:assisted-inject-processor-dagger2:0.5.2',
+    ]
+
+    deps.fresco = [
+            animatedGif  : "com.facebook.fresco:animated-gif:$versions.fresco",
+            fresco       : "com.facebook.fresco:fresco:$versions.fresco",
+            imagepipeline: "com.facebook.fresco:imagepipeline-okhttp3:$versions.fresco",
+            webpsupport  : "com.facebook.fresco:webpsupport:$versions.fresco",
+    ]
+
+    deps.moshi = [
+            core    : 'com.squareup.moshi:moshi:1.9.2',
+            codegen : 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2',
+            adapters: "com.squareup.moshi:moshi-adapters:1.9.2",
+    ]
+
+    deps.moshiSealed = [
+            annotations: 'dev.zacsweers.moshisealed:moshi-sealed-annotations:0.1.0',
+            codegen    : 'dev.zacsweers.moshisealed:moshi-sealed-codegen:0.1.0',
+    ]
+
+    deps.network = [
+            okhttp        : "com.squareup.okhttp3:okhttp:$versions.okHttp",
+            okhttpLogging : "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
+            retrofit      : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            retrofitMoshi : "com.squareup.retrofit2:converter-moshi:$versions.retrofit",
+            retrofitRxJava: "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+    ]
+
+    deps.apollo = [
+            androidSupport: "com.apollographql.apollo:apollo-android-support:$versions.apollo",
+            api           : "com.apollographql.apollo:apollo-api:$versions.apollo",
+            httpCache     : "com.apollographql.apollo:apollo-http-cache:$versions.apollo",
+            runtime       : "com.apollographql.apollo:apollo-runtime:$versions.apollo",
+            rx2Support    : "com.apollographql.apollo:apollo-rx2-support:$versions.apollo",
+    ]
+
+    deps.chucker = [
+            debug  : "com.github.ChuckerTeam.Chucker:library:3.1.2",
+            release: "com.github.ChuckerTeam.Chucker:library-no-op:3.1.2",
+    ]
+
+    deps.gradlePlugins = [
+            android            : "com.android.tools.build:gradle:$versions.androidTools",
+            androidCommand     : 'com.novoda:gradle-android-command-plugin:2.1.0',
+            apollo             : "com.apollographql.apollo:apollo-gradle-plugin:$versions.apollo",
+            buildScan          : 'com.gradle:gradle-enterprise-gradle-plugin:3.2',
+            detekt             : 'io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.6.0',
+            fabric             : 'io.fabric.tools:gradle:1.31.2',
+            git                : 'org.ajoberstar.grgit:grgit-gradle:4.0.1',
+            kotlin             : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+            kotlinAllOpen      : "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin",
+            ktlintGradle       : 'org.jlleitschuh.gradle:ktlint-gradle:9.2.1',
+            perfecto           : 'com.perfectomobile.instrumentedtest.gradleplugin:plugin:20.3',
+            performanceTracking: 'com.google.firebase:perf-plugin:1.3.1',
+            pickle             : "com.fourlastor:pickle-plugin:$versions.pickle",
+            staticAnalysis     : 'com.novoda:gradle-static-analysis-plugin:1.2',
+            versions           : 'com.github.ben-manes:gradle-versions-plugin:0.28.0',
+            sqlDelight         : "com.squareup.sqldelight:gradle-plugin:$versions.sqlDelight",
+            playPublisher      : "com.github.triplet.gradle:play-publisher:2.6.1",
+            sonar              : 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8',
+            jfrog              : 'org.jfrog.buildinfo:build-info-extractor-gradle:4.13.0',
+            appDistribution    : 'com.google.firebase:firebase-appdistribution-gradle:1.3.1',
+    ]
+
+    deps.lintRules = [
+            android: 'com.vanniktech:lint-rules-android:0.13.0',
+            rxJava : 'com.vanniktech:lint-rules-rxjava2:0.13.0',
+    ]
+
+    deps.glide = [
+            core    : "com.github.bumptech.glide:glide:$versions.glide",
+            compiler: "com.github.bumptech.glide:compiler:$versions.glide"
+    ]
+
+    deps.palette = [
+            core: "com.android.support:palette-v7:28.0.0"
+    ]
+
+    deps.test = [
+            assertj      : 'org.assertj:assertj-core:3.14.0',
+            hamcrestCore : 'org.hamcrest:hamcrest-core:2.1',
+            hamcrestLib  : 'org.hamcrest:hamcrest-library:2.1',
+            javaTime     : 'org.threeten:threetenbp:1.4.2',
+            junit        : 'junit:junit:4.13',
+            mockito      : "org.mockito:mockito-core:$versions.mockito",
+            mockitoKotlin: 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0',
+            mockwebserver: "com.squareup.okhttp3:mockwebserver:$versions.okHttp",
+            mvrxTesting  : "com.airbnb.android:mvrx-testing:$versions.mvrx",
+            robolectric  : 'org.robolectric:robolectric:4.1',
+            workManager  : "androidx.work:work-testing:$versions.work",
+            sqlDelight   : "com.squareup.sqldelight:sqlite-driver:$versions.sqlDelight",
+    ]
+
+    deps.androidTest = [
+            apolloIdler    : "com.apollographql.apollo:apollo-idling-resource:$versions.apollo",
+            cucumber       : 'io.cucumber:cucumber-java:4.4.0',
+            core           : "androidx.test:core-ktx:1.2.0",
+            espresso       : "androidx.test.espresso:espresso-core:$versions.espresso",
+            espressoContrib: "androidx.test.espresso:espresso-contrib:$versions.espresso",
+            fragmentTesting: 'androidx.fragment:fragment-testing:1.1.0',
+            hiroaki        : 'me.jorgecastillo:hiroaki-android:0.2.3',
+            idlingResource : "androidx.test.espresso:espresso-idling-resource:$versions.espresso",
+            mockito        : "org.mockito:mockito-android:$versions.mockito",
+            pickleCore     : "com.fourlastor:pickle-lib:$versions.pickle",
+            pickleProcessor: "com.fourlastor:pickle-processor:$versions.pickle",
+            orchestrator   : 'androidx.test:orchestrator:1.2.0',
+            junitExt       : 'androidx.test.ext:junit:1.1.1',
+            rxIdler        : 'com.squareup.rx.idler:rx2-idler:0.9.1'
+    ]
+
+    deps.ibm = [
+            assistant: 'com.ibm.watson:assistant:8.5.0',
+            core     : 'com.ibm.watson:speech-to-text:8.5.0',
+            sdk      : 'com.ibm.watson.developer_cloud:android-sdk:0.5.2',
+    ]
+
+    deps.animations = [
+            dots     : 'com.eyalbira.loadingdots:loading-dots:1.0.2',
+            equalizer: 'com.wang.avi:library:2.1.3'
+    ]
+
+    deps.speechRecognition = [
+            core: 'com.github.zagum:SpeechRecognitionView:1.2.2'
+    ]
+
+    deps.rxbinding = [
+            core: 'com.jakewharton.rxbinding4:rxbinding:4.0.0',
+            appcompat: 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'
+    ]
+
+    deps.circleImage = [
+            core: 'de.hdodenhof:circleimageview:3.1.0'
+    ]
+
+    deps.espresso = [
+            core: 'androidx.test.espresso:espresso-core:3.1.0'
+    ]
+}

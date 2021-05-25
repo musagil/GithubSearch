@@ -1,0 +1,14 @@
+include ':app'
+
+// Infrastructure
+include ':base'
+
+// Shared Feature Modules
+include ':repo-data'
+
+// Features
+include ':repo-list'
+include ':repo-detail'
+
+// Test
+include ':test-support'

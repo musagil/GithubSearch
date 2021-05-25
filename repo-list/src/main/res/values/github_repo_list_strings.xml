@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="github_repo_list_title">@string/app_name</string>
+    <string name="github_repo_list_menu_clear_all_tasks">Clear all</string>
+    <string name="github_repo_list_search">Search</string>
+    <string name="github_repo_no_result">Search result is empty</string>
+</resources>

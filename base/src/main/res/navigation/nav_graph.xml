@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/repoListFragment">
+
+    <fragment
+        android:id="@+id/repoListFragment"
+        android:name="com.github.search.repolist.GitHubRepoListFragment"
+        android:label="Repo List" />
+
+    <fragment
+        android:id="@+id/repoDetailFragment"
+        android:name="com.github.search.repodetail.GitHubRepoDetailFragment"
+        android:label="Repo Detail" >
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="github://repo/?id={id}" />
+
+        <argument android:name="id" app:argType="string"/>
+    </fragment>
+</navigation>

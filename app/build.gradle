@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply from: configFile('android-common-config.gradle')
+
+android {
+    dataBinding.enabled = true
+
+    defaultConfig {
+        applicationId "com.github.search"
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+    mapDiagnosticLocations = true
+
+    arguments {
+        arg 'dagger.gradle.incremental', 'true'
+        arg 'dagger.formatGeneratedSource', 'disabled'
+        arg 'dagger.experimentalAheadOfTimeSubcomponents', 'enabled'
+    }
+}
+
+dependencies {
+    implementation project(':base')
+
+    // Features
+    implementation project(':repo-list')
+    implementation project(':repo-detail')
+    implementation project(':repo-data')
+
+    implementation deps.lifecycle.process
+    implementation deps.navigation.ui
+
+    implementation deps.room.ktx
+    implementation deps.room.rxJava
+    kapt deps.room.compiler
+    implementation deps.dagger.runtime
+    implementation deps.dagger.androidRuntime
+    kapt deps.dagger.androidCompiler
+    kapt deps.dagger.compiler
+
+}
+

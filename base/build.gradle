@@ -1,0 +1,16 @@
+apply from: configFile('android-ui-library-config.gradle')
+
+dependencies {
+    api deps.network.okhttp
+    api deps.lifecycle.java8
+    api deps.network.retrofit
+    api deps.network.retrofitMoshi
+    api deps.network.retrofitRxJava
+
+    implementation deps.glide.core
+    implementation deps.palette.core
+    implementation deps.animations.equalizer
+    implementation deps.rxbinding.core
+    implementation deps.rxbinding.appcompat
+    kapt deps.glide.compiler
+}

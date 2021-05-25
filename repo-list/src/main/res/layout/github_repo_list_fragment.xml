@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewBinding"
+            type="com.github.search.repolist.GitHubRepoListViewBinding" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            layout="@layout/view_toolbar"
+            app:viewBinding="@{viewBinding.navigationViewBinding}" />
+
+        <include
+            layout="@layout/github_repo_list_no_result"
+            app:viewBinding="@{viewBinding}" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:refreshing="@{viewBinding.shouldShowRefreshing}"
+            app:swipeToRefreshListener="@{viewBinding.swipeToRefreshListener}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tasksRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fillViewport="true"
+                android:paddingStart="@dimen/base_spacing"
+                android:paddingBottom="@dimen/base_spacing"
+                app:bindableAdapter="@{viewBinding.adapter}"
+                app:data="@{viewBinding.gitHubRepositoryListItems}"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:onLoadMore="@{viewBinding.onLoadMore}"
+                app:spanCount="@integer/github_repo_list_column_count" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,12 @@
+apply from: configFile('android-ui-library-config.gradle')
+
+android {
+    resourcePrefix 'github_repo_'
+}
+
+dependencies {
+    implementation project(':repo-data')
+
+    kapt deps.moshi.codegen
+    implementation deps.moshi.core
+}

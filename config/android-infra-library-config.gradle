@@ -1,0 +1,34 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply from: configFile('android-common-config.gradle')
+
+android {
+
+    buildFeatures {
+        buildConfig = false
+        resValues = false
+    }
+
+    onVariants {
+        androidTest { enabled = false }
+    }
+
+}
+
+dependencies {
+
+    if(name != "base") implementation project(':base')
+
+    implementation deps.kotlin
+    implementation deps.rxJava
+    implementation deps.rxAndroid
+    implementation deps.rxKotlin
+
+    implementation deps.dagger.runtime
+    implementation deps.dagger.androidRuntime
+    kapt deps.dagger.androidCompiler
+    kapt deps.dagger.compiler
+    compileOnly deps.dagger.assistedAnnotations
+    kapt deps.dagger.assisted
+}
