@@ -3,7 +3,6 @@ package com.github.search.repolist
 import android.content.res.Resources
 import com.airbnb.mvrx.test.MvRxTestRule
 import com.github.search.FragmentNavigation
-import com.github.search.NavigationViewBinding
 import com.github.search.data.RepositoryInput
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
@@ -23,21 +22,11 @@ class GithubRepoListViewBindingTest {
     private val repository = mock<GitHubRepoListRepository> {
         on { fetchRepositories(any(), any()) } doReturn Observable.just(
             listOf(
-                GitHubRepository(
-                    1,
-                    "1",
-                    "Test",
-                    GitHubRepository.Owner(
-                        1,
-                        "loginName",
-                        ANY_REPO_AVATAR_URL,
-                        ANY_REPO_AVATAR_URL
-                    ),
-                    "Brand",
-                    "html_url",
-                    "12.09.2010",
-                    "13.09.2010",
-                    1
+                GitHubRepositoryListItem(
+                    id = ANY_REPO_ID,
+                    name = ANY_REPO_NAME,
+                    image = ANY_REPO_AVATAR_URL,
+                    desc = ANY_REPO_DESC
                 )
             )
         )
@@ -46,13 +35,7 @@ class GithubRepoListViewBindingTest {
     }
     private val viewModel = testViewModel(repository)
     private val viewBinding =
-        GitHubRepoListViewBinding(
-            fragment,
-            viewModel,
-            NavigationViewBinding(fragment),
-            mock(),
-            resources
-        )
+        testViewBinding(fragment, viewModel = viewModel, resources = resources)
 
     @Test
     fun `given view binding initialised the title should be right one`() {

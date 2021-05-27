@@ -15,21 +15,11 @@ class GithubRepoListViewModelTest {
     private val repository = mock<GitHubRepoListRepository> {
         on { fetchRepositories(any(), any()) } doReturn Observable.just(
             listOf(
-                GitHubRepository(
-                    ANY_REPO_ID,
-                    ANY_REPO_NAME,
-                    ANY_REPO_NAME,
-                    GitHubRepository.Owner(
-                        1,
-                        "loginName",
-                        ANY_REPO_AVATAR_URL,
-                        ANY_REPO_AVATAR_URL
-                    ),
-                    ANY_REPO_DESC,
-                    "html_url",
-                    "12.09.2010",
-                    "13.09.2010",
-                    1
+                GitHubRepositoryListItem(
+                    id = ANY_REPO_ID,
+                    name = ANY_REPO_NAME,
+                    image = ANY_REPO_AVATAR_URL,
+                    desc = ANY_REPO_DESC
                 )
             )
         )

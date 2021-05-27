@@ -14,6 +14,7 @@ internal fun testViewBinding(
 ) = GitHubRepoListViewBinding(
     fragment,
     viewModel,
+    GitHubRepoAdapter(viewModel),
     NavigationViewBinding(fragment),
     navigation,
     resources
